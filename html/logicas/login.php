@@ -2,6 +2,8 @@
 
 require_once(__DIR__ . '/../logicas/autenticacao.php');
 
+session_start();
+
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
@@ -18,8 +20,6 @@ $usuarioEncontrado = $autenticacao->obterUsuarioPorEmailSenha($email, $senha);
 if ($usuarioEncontrado == NULL) {
     die("Login ou senha incorretos");
 }
-
-session_start();
 
 $_SESSION['usuarioLogado'] = $usuarioEncontrado;
 
