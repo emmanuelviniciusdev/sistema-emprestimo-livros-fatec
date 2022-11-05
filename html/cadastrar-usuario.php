@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Livros Emprestados</title>
+    <title>Cadastrar Usuário</title>
 
     <!-- Bootstrap (copiar/colar) -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
     <div class="container mt-5" style="max-width: 1000px;">
         <div class="row bg-light border rounded-3 p-2">
             <div class="col">
-                <h1 class="display-6">Livros Emprestados</h1>
+                <h1 class="display-6">Cadastrar Usuário</h1>
                 <p style="margin: 0;">Autenticado como <b><?php echo $usuarioLogado->getEmail() ?></b></p>
                 <p style="margin: 0;">Você é: <b><?php echo $usuarioLogado->getPermissao() ?></b></p>
             </div>
@@ -46,47 +46,26 @@
                 <a href="sair.php" class="btn btn-danger w-100 mb-1">Sair</a>
             </div>
             <div class="col">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Título</th>
-                            <th>Autor</th>
-                            <th>Área</th>
-                            <th>Ano</th>
-                            <th>Tombo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@email.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">Senha</label>
+                        <input type="senha" class="form-control" id="senha" name="senha" placeholder="Senha">
+                    </div>
+                    <div class="mb-3">
+                        <!-- USUÁRIOS COM PERMISSÃO "ADMINISTRADOR" SÓ PODEM SER CADASTRADOS VIA SQL -->
+                        <label for="permissao" class="form-label">Permissão</label>
+                        <select name="permissao" id="permissao" class="form-select">
+                            <option>Selecione a permissão</option>
+                            <option value="1">ALUNO</option>
+                            <option value="2">BIBLIOTECÁRIO</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">Cadastrar</button>
+                </form>
             </div>
         </div>
     </div>

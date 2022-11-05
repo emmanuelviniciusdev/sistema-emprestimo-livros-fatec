@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Livros Emprestados</title>
+    <title>Emprestar um Livro</title>
 
     <!-- Bootstrap (copiar/colar) -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
     <div class="container mt-5" style="max-width: 1000px;">
         <div class="row bg-light border rounded-3 p-2">
             <div class="col">
-                <h1 class="display-6">Livros Emprestados</h1>
+                <h1 class="display-6">Emprestar um Livro</h1>
                 <p style="margin: 0;">Autenticado como <b><?php echo $usuarioLogado->getEmail() ?></b></p>
                 <p style="margin: 0;">Você é: <b><?php echo $usuarioLogado->getPermissao() ?></b></p>
             </div>
@@ -46,47 +46,27 @@
                 <a href="sair.php" class="btn btn-danger w-100 mb-1">Sair</a>
             </div>
             <div class="col">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th>Título</th>
-                            <th>Autor</th>
-                            <th>Área</th>
-                            <th>Ano</th>
-                            <th>Tombo</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <form>
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Usuário</label>
+                        <select name="usuario" id="usuario" class="form-select">
+                            <option>Selecione o usuário</option>
+                            <option>usuario.1@email.com</option>
+                            <option>usuario.2@email.com</option>
+                            <option>usuario.3@email.com</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="livro" class="form-label">Livro</label>
+                        <select name="livro" id="livro" class="form-select">
+                            <option>Selecione o livro</option>
+                            <option>Clean Code, Robert Cecil Martin (2008)</option>
+                            <option>Clean Code, Robert Cecil Martin (2008)</option>
+                            <option>Clean Code, Robert Cecil Martin (2008)</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary">Emprestar</button>
+                </form>
             </div>
         </div>
     </div>

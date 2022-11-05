@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Livros Emprestados</title>
+    <title>Empréstimo de Livros</title>
 
     <!-- Bootstrap (copiar/colar) -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
     <div class="container mt-5" style="max-width: 1000px;">
         <div class="row bg-light border rounded-3 p-2">
             <div class="col">
-                <h1 class="display-6">Livros Emprestados</h1>
+                <h1 class="display-6">Empréstimo de Livros</h1>
                 <p style="margin: 0;">Autenticado como <b><?php echo $usuarioLogado->getEmail() ?></b></p>
                 <p style="margin: 0;">Você é: <b><?php echo $usuarioLogado->getPermissao() ?></b></p>
             </div>
@@ -46,44 +46,46 @@
                 <a href="sair.php" class="btn btn-danger w-100 mb-1">Sair</a>
             </div>
             <div class="col">
+                <a href="emprestar-livro.php" class="btn btn-primary">Emprestar um Livro</a>
+                <hr>
+                <p class="h5">Livros Emprestados</p>
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>E-mail do Usuário</th>
                             <th>Título</th>
                             <th>Autor</th>
-                            <th>Área</th>
                             <th>Ano</th>
-                            <th>Tombo</th>
+                            <th>#</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>email@usuario.com</td>
                             <td>Clean Code</td>
                             <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
                             <td>2008</td>
-                            <td>???</td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-warning">Devolução</a>
+                            </td>
                         </tr>
                         <tr>
+                            <td>email@usuario.com</td>
                             <td>Clean Code</td>
                             <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
                             <td>2008</td>
-                            <td>???</td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-warning">Devolução</a>
+                            </td>
                         </tr>
                         <tr>
+                            <td>email@usuario.com</td>
                             <td>Clean Code</td>
                             <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
                             <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
+                            <td>
+                                <a href="#" class="btn btn-sm btn-warning">Devolução</a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
