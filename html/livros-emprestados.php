@@ -12,6 +12,8 @@
     if (!isset($_SESSION['usuarioLogado'])) {
         header('Location: index.php');
     }
+
+    $usuarioLogado = $_SESSION['usuarioLogado'];
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +29,65 @@
     <!-- Bootstrap (copiar/colar) -->
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center mt-5">Livros Emprestados</h1>
+    <div class="container mt-5" style="max-width: 1000px;">
+        <div class="row bg-light border rounded-3 p-2">
+            <div class="col">
+                <h1 class="display-6">Livros Emprestados</h1>
+                <p style="margin: 0;">Autenticado como <b><?php echo $usuarioLogado->getEmail() ?></b></p>
+                <p style="margin: 0;">Você é: <b><?php echo $usuarioLogado->getPermissao() ?></b></p>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-2">
+                <a href="#" class="btn btn-secondary w-100 mb-1">Empréstimo de Livros</a>
+                <a href="#" class="btn btn-secondary w-100 mb-1">Usuários</a>
+                <hr>
+                <a href="#" class="btn btn-danger w-100 mb-1">Sair</a>
+            </div>
+            <div class="col">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Área</th>
+                            <th>Ano</th>
+                            <th>Tombo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Clean Code</td>
+                            <td>Robert Cecil Martin</td>
+                            <td>Engenharia de Software</td>
+                            <td>2008</td>
+                            <td>???</td>
+                        </tr>
+                        <tr>
+                            <td>Clean Code</td>
+                            <td>Robert Cecil Martin</td>
+                            <td>Engenharia de Software</td>
+                            <td>2008</td>
+                            <td>???</td>
+                        </tr>
+                        <tr>
+                            <td>Clean Code</td>
+                            <td>Robert Cecil Martin</td>
+                            <td>Engenharia de Software</td>
+                            <td>2008</td>
+                            <td>???</td>
+                        </tr>
+                        <tr>
+                            <td>Clean Code</td>
+                            <td>Robert Cecil Martin</td>
+                            <td>Engenharia de Software</td>
+                            <td>2008</td>
+                            <td>???</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap (copiar/colar) -->
