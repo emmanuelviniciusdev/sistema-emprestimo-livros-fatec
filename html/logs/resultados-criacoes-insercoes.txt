@@ -1,0 +1,17 @@
+-- Cria o banco de dados
+Query OK, 1 row affected (0.02 sec)
+Database changed
+
+-- Cria o usuário de acesso ao banco de dados
+Query OK, 0 rows affected (0.02 sec)
+
+-- Cede permissão de acesso do banco 'db_biblioteca' ao usuário 'ubp'
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+-- Cria 'tb_usuario'
+Query OK, 0 rows affected (0.06 sec)
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+Query OK, 0 rows affected (0.00 sec)
