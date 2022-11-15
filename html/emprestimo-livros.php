@@ -3,6 +3,7 @@
     require_once(__DIR__ . '/modelos/Livro.php');
     require_once(__DIR__ . '/modelos/Usuario.php');
     require_once(__DIR__ . '/logicas/log.php');
+    require_once(__DIR__ . '/logicas/emprestimo-logica.php');
 
     session_start();
 
@@ -14,6 +15,11 @@
     }
 
     $usuarioLogado = $_SESSION['usuarioLogado'];
+
+    
+    $emprestimoLogica = new EmprestimoLogica();
+
+    $emprestimosVigentesTodosUsuarios = $emprestimoLogica->obterEmprestimosVigentesTodosUsuarios();
 ?>
 
 <!DOCTYPE html>
@@ -60,33 +66,20 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>email@usuario.com</td>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>2008</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-warning">Devolução</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>email@usuario.com</td>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>2008</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-warning">Devolução</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>email@usuario.com</td>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>2008</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-warning">Devolução</a>
-                            </td>
-                        </tr>
+                        <?php
+                            foreach ($emprestimosVigentesTodosUsuarios as $emprestimo) {
+                                $livro = $emprestimo->getLivro();
+                                $usuario = $emprestimo->getUsuario();
+
+                                echo "<tr>";
+                                echo "<td>" . $usuario->getEmail() . "</td>";
+                                echo "<td>" . $livro->getTitulo() . "</td>";
+                                echo "<td>" . $livro->getAutor() . "</td>";
+                                echo "<td>" . $livro->getAno() . "</td>";
+                                echo "<td><a href=\"#\" class=\"btn btn-sm btn-warning\">Devolução</a></td>";
+                                echo "</tr>";
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>

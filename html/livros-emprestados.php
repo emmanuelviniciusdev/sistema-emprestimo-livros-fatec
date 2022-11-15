@@ -3,6 +3,7 @@
     require_once(__DIR__ . '/modelos/Livro.php');
     require_once(__DIR__ . '/modelos/Usuario.php');
     require_once(__DIR__ . '/logicas/log.php');
+    require_once(__DIR__ . '/logicas/emprestimo-logica.php');
 
     session_start();
 
@@ -14,6 +15,10 @@
     }
 
     $usuarioLogado = $_SESSION['usuarioLogado'];
+
+    $emprestimoLogica = new EmprestimoLogica();
+
+    $emprestimosVigentesUsuarioLogado = $emprestimoLogica->obterEmprestimosVigentesUsuario($usuarioLogado->getId());
 ?>
 
 <!DOCTYPE html>
@@ -57,34 +62,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
-                        <tr>
-                            <td>Clean Code</td>
-                            <td>Robert Cecil Martin</td>
-                            <td>Engenharia de Software</td>
-                            <td>2008</td>
-                            <td>???</td>
-                        </tr>
+                        <?php
+                            foreach ($emprestimosVigentesUsuarioLogado as $emprestimo) {
+                                $livro = $emprestimo->getLivro();
+
+                                echo "<tr>";
+                                echo "<td>" . $livro->getTitulo() . "</td>";
+                                echo "<td>" . $livro->getAutor() . "</td>";
+                                echo "<td>" . $livro->getArea() . "</td>";
+                                echo "<td>" . $livro->getAno() . "</td>";
+                                echo "<td>" . $livro->getTombo() . "</td>";
+                                echo "</tr>";
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>

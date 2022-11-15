@@ -3,13 +3,13 @@
 class Livro
 {
     private int $id;
-    private string $autor;
-    private string $titulo;
-    private string $area;
-    private int $ano;
-    private string $tombo;
+    private ?string $autor;
+    private ?string $titulo;
+    private ?string $area;
+    private ?int $ano;
+    private ?string $tombo;
 
-    public function __construct(int $id, string $autor, string $titulo, string $area, int $ano, string $tombo)
+    public function __construct(int $id, ?string $autor, ?string $titulo, ?string $area, ?int $ano, ?string $tombo)
     {
         $this->id = $id;
         $this->autor = $autor;

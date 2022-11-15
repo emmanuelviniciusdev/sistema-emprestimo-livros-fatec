@@ -45,7 +45,7 @@ CREATE TABLE `tb_emprestimo` (
   `id_livro` int NOT NULL,
   `id_usuario` int NOT NULL,
   `data_emprestimo` datetime NOT NULL,
-  `data_devolucao` datetime NOT NULL
+  `data_devolucao` datetime
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 ALTER TABLE `tb_emprestimo`
