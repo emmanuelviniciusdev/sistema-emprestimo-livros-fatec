@@ -7,7 +7,7 @@ $usuarioId = $_POST['usuario'];
 $livroId = $_POST['livro'];
 
 if (!isset($usuarioId) || !isset($livroId)) {
-    echo "Usuário ou livro inválido";
+    die("Usuário ou livro inválido");
 }
 
 $conexaoBD = new ConexaoBD();
@@ -18,7 +18,7 @@ $query = $conexaoBD->mysqli->query("
 ");
 
 if (!$query) {
-    echo "Erro ao inserir dados na tb_emprestimo";
+    die("Erro ao inserir dados na tb_emprestimo");
 }
 
 header('Location: ../emprestimo-livros.php');

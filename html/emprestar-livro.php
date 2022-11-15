@@ -20,7 +20,7 @@
     $usuarioLogica = new UsuarioLogica();
     $livroLogica = new LivroLogica();
 
-    $todosUsuarios = $usuarioLogica->obterTodosUsuarios();
+    $todosUsuarios = $usuarioLogica->obterTodosUsuarios($usuarioLogado->getId());
     $todosLivros = $livroLogica->obterTodosLivros();
 ?>
 

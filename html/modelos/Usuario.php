@@ -23,6 +23,11 @@ class Usuario
         return $this->email;
     }
 
+    public function getNivel()
+    {
+        return $this->nivel;
+    }
+
     /**
      * NÍVEL 1 => ALUNO
      * NÍVEL 2 => BIBLIOTECÁRIO

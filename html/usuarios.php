@@ -3,6 +3,7 @@
     require_once(__DIR__ . '/modelos/Livro.php');
     require_once(__DIR__ . '/modelos/Usuario.php');
     require_once(__DIR__ . '/logicas/log-logica.php');
+    require_once(__DIR__ . '/logicas/usuario-logica.php');
 
     session_start();
 
@@ -14,6 +15,10 @@
     }
 
     $usuarioLogado = $_SESSION['usuarioLogado'];
+
+    $usuarioLogica = new UsuarioLogica();
+
+    $todosUsuarios = $usuarioLogica->obterTodosUsuarios($usuarioLogado->getId());
 ?>
 
 <!DOCTYPE html>
@@ -59,30 +64,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>email@usuario.com</td>
-                            <td>1</td>
-                            <td>ALUNO</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-danger">Deletar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>email@usuario.com</td>
-                            <td>1</td>
-                            <td>ALUNO</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-danger">Deletar</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>email@usuario.com</td>
-                            <td>1</td>
-                            <td>ALUNO</td>
-                            <td>
-                                <a href="#" class="btn btn-sm btn-danger">Deletar</a>
-                            </td>
-                        </tr>
+                        <?php
+                            foreach($todosUsuarios as $usuario) {
+                                echo "<tr>";
+                                echo "<td>{$usuario->getEmail()}</td>";
+                                echo "<td>{$usuario->getNivel()}</td>";
+                                echo "<td>{$usuario->getPermissao()}</td>";
+                                echo "<td><a href='logicas/acao-deletar-usuario.php?id_usuario={$usuario->getId()}' class='btn btn-sm btn-danger'>Deletar</a></td>";
+                                echo "</tr>";
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>

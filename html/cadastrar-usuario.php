@@ -3,6 +3,7 @@
     require_once(__DIR__ . '/modelos/Livro.php');
     require_once(__DIR__ . '/modelos/Usuario.php');
     require_once(__DIR__ . '/logicas/log-logica.php');
+    require_once(__DIR__ . '/logicas/usuario-logica.php');
 
     session_start();
 
@@ -14,6 +15,8 @@
     }
 
     $usuarioLogado = $_SESSION['usuarioLogado'];
+
+    $usuarioLogica = new UsuarioLogica();
 ?>
 
 <!DOCTYPE html>
@@ -46,14 +49,14 @@
                 <a href="sair.php" class="btn btn-danger w-100 mb-1">Sair</a>
             </div>
             <div class="col">
-                <form>
+                <form method="post" action="logicas/acao-cadastrar-usuario.php">
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@email.com">
                     </div>
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha</label>
-                        <input type="senha" class="form-control" id="senha" name="senha" placeholder="Senha">
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha">
                     </div>
                     <div class="mb-3">
                         <!-- USUÁRIOS COM PERMISSÃO "ADMINISTRADOR" SÓ PODEM SER CADASTRADOS VIA SQL -->

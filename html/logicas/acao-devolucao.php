@@ -7,7 +7,7 @@ $idUsuario = $_GET['id_usuario'];
 $idLivro = $_GET['id_livro'];
 
 if (!isset($idUsuario) && !isset($idLivro)) {
-    echo "Parâmetros 'id_usuario' e 'id_livro' inválidos";
+    die("Parâmetros 'id_usuario' e 'id_livro' inválidos");
 }
 
 $conexaoBD = new ConexaoBD();
@@ -18,7 +18,7 @@ $query = $conexaoBD->mysqli->query("
 ");
 
 if (!$query) {
-    echo "Erro ao atualizar tb_emprestimo";
+    die("Erro ao atualizar tb_emprestimo");
 }
 
 header('Location: ../emprestimo-livros.php');
