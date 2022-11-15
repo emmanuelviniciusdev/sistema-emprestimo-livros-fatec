@@ -3,7 +3,7 @@
 require_once(__DIR__ . '/../banco_de_dados/conexao_bd.php');
 require_once(__DIR__ . '/../modelos/Usuario.php');
 
-class Autenticacao
+class AutenticacaoLogica
 {
     private $conexaoBD;
 

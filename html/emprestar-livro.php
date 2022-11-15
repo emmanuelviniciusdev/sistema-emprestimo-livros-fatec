@@ -2,7 +2,9 @@
     require_once(__DIR__ . '/modelos/Emprestimo.php');
     require_once(__DIR__ . '/modelos/Livro.php');
     require_once(__DIR__ . '/modelos/Usuario.php');
-    require_once(__DIR__ . '/logicas/log.php');
+    require_once(__DIR__ . '/logicas/log-logica.php');
+    require_once(__DIR__ . '/logicas/usuario-logica.php');
+    require_once(__DIR__ . '/logicas/livro-logica.php');
 
     session_start();
 
@@ -14,6 +16,12 @@
     }
 
     $usuarioLogado = $_SESSION['usuarioLogado'];
+
+    $usuarioLogica = new UsuarioLogica();
+    $livroLogica = new LivroLogica();
+
+    $todosUsuarios = $usuarioLogica->obterTodosUsuarios();
+    $todosLivros = $livroLogica->obterTodosLivros();
 ?>
 
 <!DOCTYPE html>
@@ -46,23 +54,35 @@
                 <a href="sair.php" class="btn btn-danger w-100 mb-1">Sair</a>
             </div>
             <div class="col">
-                <form>
+                <form method="post" action="logicas/acao-emprestar.php">
                     <div class="mb-3">
                         <label for="usuario" class="form-label">Usuário</label>
                         <select name="usuario" id="usuario" class="form-select">
                             <option>Selecione o usuário</option>
-                            <option>usuario.1@email.com</option>
-                            <option>usuario.2@email.com</option>
-                            <option>usuario.3@email.com</option>
+                            <?php
+                                foreach ($todosUsuarios as $usuario) {
+                                    $usuarioId = $usuario->getId();
+                                    $usuarioEmail = $usuario->getEmail();
+
+                                    echo "<option value='$usuarioId'>$usuarioEmail</option>";
+                                }
+                            ?>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="livro" class="form-label">Livro</label>
                         <select name="livro" id="livro" class="form-select">
                             <option>Selecione o livro</option>
-                            <option>Clean Code, Robert Cecil Martin (2008)</option>
-                            <option>Clean Code, Robert Cecil Martin (2008)</option>
-                            <option>Clean Code, Robert Cecil Martin (2008)</option>
+                            <?php
+                                foreach ($todosLivros as $livro) {
+                                    $livroId = $livro->getId();
+                                    $livroTitulo = $livro->getTitulo();
+                                    $livroAutor = $livro->getAutor();
+                                    $livroAno = $livro->getAno();
+
+                                    echo "<option value='$livroId'>$livroTitulo, $livroAutor ($livroAno)</option>";
+                                }
+                            ?>
                         </select>
                     </div>
                     <button class="btn btn-primary">Emprestar</button>

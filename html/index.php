@@ -30,7 +30,7 @@
                     <b>Login</b>
                 </div>
                 <div class="card-body">
-                    <form action="logicas/login.php" method="POST">
+                    <form action="logicas/acao-login.php" method="POST">
                         <div class="mb-3">
                             <label for="email" class="form-label">E-mail</label>
                             <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@email.com">

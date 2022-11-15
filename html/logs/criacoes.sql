@@ -49,7 +49,7 @@ CREATE TABLE `tb_emprestimo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 ALTER TABLE `tb_emprestimo`
-  ADD PRIMARY KEY (`id_livro`,`id_usuario`),
+  ADD PRIMARY KEY (`id_livro`,`id_usuario`,`data_emprestimo`) USING BTREE,
   ADD KEY `tb_emprestimo_ibfk_2` (`id_usuario`);
 
 ALTER TABLE `tb_emprestimo`

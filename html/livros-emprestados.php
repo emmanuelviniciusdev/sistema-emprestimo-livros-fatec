@@ -2,7 +2,7 @@
     require_once(__DIR__ . '/modelos/Emprestimo.php');
     require_once(__DIR__ . '/modelos/Livro.php');
     require_once(__DIR__ . '/modelos/Usuario.php');
-    require_once(__DIR__ . '/logicas/log.php');
+    require_once(__DIR__ . '/logicas/log-logica.php');
     require_once(__DIR__ . '/logicas/emprestimo-logica.php');
 
     session_start();

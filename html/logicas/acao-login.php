@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/../logicas/autenticacao.php');
+require_once(__DIR__ . '/../logicas/autenticacao-logica.php');
 
 session_start();
 
@@ -13,9 +13,9 @@ if ($credenciaisVazias) {
     die("Por favor, especifique suas credenciais");
 }
 
-$autenticacao = new Autenticacao();
+$autenticacaoLogica = new AutenticacaoLogica();
 
-$usuarioEncontrado = $autenticacao->obterUsuarioPorEmailSenha($email, $senha);
+$usuarioEncontrado = $autenticacaoLogica->obterUsuarioPorEmailSenha($email, $senha);
 
 if ($usuarioEncontrado == NULL) {
     die("Login ou senha incorretos");

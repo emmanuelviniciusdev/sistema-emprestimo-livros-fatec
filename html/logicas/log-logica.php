@@ -6,7 +6,7 @@ require_once(__DIR__ . '/../modelos/Emprestimo.php');
 
 date_default_timezone_set('America/Sao_Paulo');
 
-class Log
+class LogLogica
 {
     private Usuario $usuarioLogado;
 
