@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/../logicas/autenticacao-logica.php');
+require_once(__DIR__ . '/../logicas/log-logica.php');
 
 session_start();
 
@@ -22,5 +23,8 @@ if ($usuarioEncontrado == NULL) {
 }
 
 $_SESSION['usuarioLogado'] = $usuarioEncontrado;
+
+$logLogica = new LogLogica($usuarioEncontrado);
+$logLogica->registrarLogin();
 
 header('Location: ../livros-emprestados.php');

@@ -29,24 +29,6 @@ class LogLogica
         $this->salvarLogArquivoTexto($log);
     }
 
-    public function registrarInsercaoLivro(Livro $livro)
-    {
-        $informacoesLivro = "{$livro->getTitulo()}, {$livro->getAutor()} ({$livro->getAno()})";
-        
-        $log = $this->montarLog("registrou um novo livro ($informacoesLivro)");
-        
-        $this->salvarLogArquivoTexto($log);
-    }
-
-    public function registrarExclusaoLivro(Livro $livro)
-    {
-        $informacoesLivro = "{$livro->getTitulo()}, {$livro->getAutor()} ({$livro->getAno()})";
-        
-        $log = $this->montarLog("deletou um livro ($informacoesLivro)");
-
-        $this->salvarLogArquivoTexto($log);
-    }
-
     public function registrarNovoEmprestimo(Emprestimo $emprestimo)
     {
         $usuarioEmprestimo = $emprestimo->getUsuario();

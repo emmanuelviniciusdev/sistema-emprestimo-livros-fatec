@@ -1,6 +1,9 @@
 <?php
 
 require_once(__DIR__ . '/usuario-logica.php');
+require_once(__DIR__ . '/log-logica.php');
+
+session_start();
 
 $email = $_POST['email'];
 $senha = $_POST['senha'];
@@ -12,10 +15,13 @@ if (!isset($email) || !isset($senha) || !isset($nivel)) {
 
 $usuarioLogica = new UsuarioLogica();
 
-$sucessoCadastroUsuario = $usuarioLogica->cadastrarUsuario($email, $senha, $nivel);
+$usuarioCadastrado = $usuarioLogica->cadastrarUsuario($email, $senha, $nivel);
 
-if (!$sucessoCadastroUsuario) {
+if (!$usuarioCadastrado) {
     die("Erro ao cadastrar usuário");
 }
+
+$logLogica = new LogLogica($_SESSION['usuarioLogado']);
+$logLogica->registrarInsercaoUsuario($usuarioCadastrado);
 
 header('Location: ../usuarios.php');

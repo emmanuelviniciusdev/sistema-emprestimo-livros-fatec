@@ -1,6 +1,9 @@
 <?php
 
 require_once(__DIR__ . '/usuario-logica.php');
+require_once(__DIR__ . '/log-logica.php');
+
+session_start();
 
 $usuarioId = $_GET['id_usuario'];
 
@@ -10,10 +13,13 @@ if (!isset($usuarioId)) {
 
 $usuarioLogica = new UsuarioLogica();
 
-$sucessoDeletarUsuario = $usuarioLogica->deletarUsuarioPorId($usuarioId);
+$usuarioDeletado = $usuarioLogica->deletarUsuarioPorId($usuarioId);
 
-if (!$sucessoDeletarUsuario) {
+if (!$usuarioDeletado) {
     die("Erro ao deletar usuário");
 }
+
+$logLogica = new LogLogica($_SESSION['usuarioLogado']);
+$logLogica->registrarExclusaoUsuario($usuarioDeletado);
 
 header('Location: ../usuarios.php');

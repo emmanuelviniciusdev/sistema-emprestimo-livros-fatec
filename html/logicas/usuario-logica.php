@@ -14,9 +14,23 @@ class UsuarioLogica
 
     public function deletarUsuarioPorId(int $usuarioId)
     {
+        $query = $this->conexaoBD->mysqli->query("SELECT * FROM tb_usuario WHERE id = $usuarioId");
+
+        $resultado = $query->fetch_assoc();
+
+        $usuario = new Usuario(
+            $resultado['id'],
+            $resultado['email'],
+            $resultado['nivel'],
+        );
+
         $query = $this->conexaoBD->mysqli->query("DELETE FROM tb_usuario WHERE id = $usuarioId");
 
-        return $query;
+        if (!$query) {
+            return NULL;
+        }
+
+        return $usuario;
     }
 
     public function cadastrarUsuario(string $email, string $senha, int $nivel)
@@ -32,12 +46,34 @@ class UsuarioLogica
             return false;
         }
 
+        /**
+         * Insere usuário
+         */
         $query = $this->conexaoBD->mysqli->query("
             INSERT INTO tb_usuario (email, senha, nivel)
             VALUES ('$email', '$senha', $nivel)
         ");
 
-        return $query;
+        if (!$query) {
+            return false;
+        }
+
+        /**
+         * Seleciona usuário para criar uma instância do modelo "Usuario"
+         */
+        $query = $this->conexaoBD->mysqli->query("
+            SELECT * FROM tb_usuario WHERE email = '$email'
+        ");
+
+        $resultado = $query->fetch_assoc();
+
+        $usuario = new Usuario(
+            $resultado['id'],
+            $resultado['email'],
+            $resultado['nivel'],
+        );
+
+        return $usuario;
     }
 
     /**
