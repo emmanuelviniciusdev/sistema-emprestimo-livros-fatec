@@ -17,6 +17,10 @@
     $usuarioLogado = $_SESSION['usuarioLogado'];
 
     $usuarioLogica = new UsuarioLogica();
+
+    $usuarioPodeAbrirEmprestimoLivros = [];
+    $usuarioPodeAbrirEmprestimoLivros = [];
+    $usuarioPodeAbrirEmprestimoLivros = [];
 ?>
 
 <!DOCTYPE html>
@@ -43,9 +47,17 @@
         <div class="row mt-3">
             <div class="col-2">
                 <a href="livros-emprestados.php" class="btn btn-secondary w-100 mb-1">Livros Emprestados</a>
-                <a href="emprestimo-livros.php" class="btn btn-secondary w-100 mb-1">Empréstimo de Livros</a>
-                <a href="usuarios.php" class="btn btn-secondary w-100 mb-1">Usuários</a>
+
+                <?php if ($usuarioLogado->getPermissao() == "BIBLIOTECÁRIO" || $usuarioLogado->getPermissao() == "ADMINISTRADOR") { ?>
+                    <a href="emprestimo-livros.php" class="btn btn-secondary w-100 mb-1">Empréstimo de Livros</a>
+                <?php } ?>
+
+                <?php if ($usuarioLogado->getPermissao() == "ADMINISTRADOR") { ?>
+                    <a href="usuarios.php" class="btn btn-secondary w-100 mb-1">Usuários</a>
+                <?php } ?>
+                                
                 <hr>
+                
                 <a href="sair.php" class="btn btn-danger w-100 mb-1">Sair</a>
             </div>
             <div class="col">
